@@ -41,6 +41,7 @@ public:
   virtual void Redraw(const size_t update) = 0;
   virtual void Download(const std::string & fn) = 0;
 
+  virtual bool IsActive();
 
   
   WebArtistBase(
@@ -124,3 +125,5 @@ void WebArtistBase::Toggle() {
   else Deactivate();
 }
 std::string WebArtistBase::GetName() const { return name; }
+
+bool WebArtistBase::IsActive() { return (description.GetCSS("display") == "none") ? false : true; }

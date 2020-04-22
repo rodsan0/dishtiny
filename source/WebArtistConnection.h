@@ -72,12 +72,12 @@ public:
 
 
   void Download(const std::string & fn) {
-    if (description.GetCSS("display") != "none") canvas.DownloadPNG(fn);
+    if (IsActive()) canvas.DownloadPNG(fn);
   }
 
   void Redraw(const size_t update) {
 
-    if (update == last_update || description.GetCSS("display") == "none") {
+    if (update == last_update || !IsActive()) {
       return;
     }
     else last_update = update;
